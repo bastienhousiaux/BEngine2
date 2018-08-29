@@ -1,0 +1,11 @@
+"use strict";
+// var IArray1D=BEngine.collections.IArray1D;
+// var Array1D=BEngine.collections.Array1D;
+// var FixedArray1D=BEngine.collections.FixedArray1D;
+// var IArray2D=BEngine.collections.IArray2D;
+// var Array2D=BEngine.collections.Array2D;
+// var FixedArray2D=BEngine.collections.FixedArray2D;
+// var ElemenList=BEngine.collections.ElementList;
+// var Array2DPattern=BEngine.gamelogic.Array2DPattern;
+// var ArrayPattern=BEngine.gamelogic.ArrayPattern;
+// var Pattern2DBasedIA=BEngine.gamelogic.Pattern2DBasedIA;
