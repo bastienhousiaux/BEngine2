@@ -1,6 +1,6 @@
-import { BEngineObject } from './../core/BEngineObject';
+import { BEngineEmitter } from './../core/BEngineEmitter';
 /// <reference path="../components/Component.ts"/>
-export class Element extends BEngineObject {
+export class Element extends BEngineEmitter {
 
     // components:Array<BEngine.components.Component>=[];
     displayElement: PIXI.Container;
@@ -49,7 +49,7 @@ export class Element extends BEngineObject {
 
     destroy() {
         this.displayElement.destroy();
-        super.destroy();
+        // super.destroy();
     }
 
     addChild(element:Element | PIXI.Container) {
@@ -160,7 +160,7 @@ export class Element extends BEngineObject {
         return this.displayElement.scale.y;
     }
 
-    clone(): BEngineObject {
+    clone(): any {
         console.log("clone can't be used on element");
         return null;
     }

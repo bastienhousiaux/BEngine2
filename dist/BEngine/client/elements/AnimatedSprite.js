@@ -1,5 +1,4 @@
 "use strict";
-/// <reference path="Container.ts" />
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -13,56 +12,52 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var BEngine;
-(function (BEngine) {
-    var elements;
-    (function (elements) {
-        var AnimatedSprite = /** @class */ (function (_super) {
-            __extends(AnimatedSprite, _super);
-            function AnimatedSprite(textures, autoupdate) {
-                if (autoupdate === void 0) { autoupdate = true; }
-                var _this = _super.call(this, new PIXI.extras.AnimatedSprite(textures, autoupdate)) || this;
-                _this.isCompleted = false;
-                _this.displayElement.play();
-                _this.displayElement.onFrameChange = function (frameNumber) {
-                    if (frameNumber === (_this.displayElement).textures.length - 1) {
-                        _this.emit(BEngine.elements.AnimatedSprite.COMPLETED);
-                        _this.isCompleted = true;
-                    }
-                    else {
-                        _this.isCompleted = false;
-                    }
-                };
-                return _this;
+Object.defineProperty(exports, "__esModule", { value: true });
+var Element_1 = require("./Element");
+var AnimatedSprite = /** @class */ (function (_super) {
+    __extends(AnimatedSprite, _super);
+    function AnimatedSprite(textures, autoupdate) {
+        if (autoupdate === void 0) { autoupdate = true; }
+        var _this = _super.call(this, new PIXI.extras.AnimatedSprite(textures, autoupdate)) || this;
+        _this.isCompleted = false;
+        _this.displayElement.play();
+        _this.displayElement.onFrameChange = function (frameNumber) {
+            if (frameNumber === (_this.displayElement).textures.length - 1) {
+                _this.emit(AnimatedSprite.COMPLETED);
+                _this.isCompleted = true;
             }
-            AnimatedSprite.prototype.play = function () {
-                this.displayElement.play();
-            };
-            AnimatedSprite.prototype.gotoAndPlay = function (frameNumber) {
-                this.displayElement.gotoAndPlay(frameNumber);
-            };
-            AnimatedSprite.prototype.stop = function () {
-                this.displayElement.stop();
-            };
-            AnimatedSprite.prototype.gotoAndStop = function (frameNumber) {
-                this.displayElement.gotoAndStop(frameNumber);
-            };
-            Object.defineProperty(AnimatedSprite.prototype, "loop", {
-                get: function () {
-                    return this.displayElement.loop;
-                },
-                set: function (loop) {
-                    this.displayElement.loop = loop;
-                },
-                enumerable: true,
-                configurable: true
-            });
-            AnimatedSprite.COMPLETED = "completed";
-            return AnimatedSprite;
-        }(BEngine.elements.Element));
-        elements.AnimatedSprite = AnimatedSprite;
-    })(elements = BEngine.elements || (BEngine.elements = {}));
-})(BEngine || (BEngine = {}));
+            else {
+                _this.isCompleted = false;
+            }
+        };
+        return _this;
+    }
+    AnimatedSprite.prototype.play = function () {
+        this.displayElement.play();
+    };
+    AnimatedSprite.prototype.gotoAndPlay = function (frameNumber) {
+        this.displayElement.gotoAndPlay(frameNumber);
+    };
+    AnimatedSprite.prototype.stop = function () {
+        this.displayElement.stop();
+    };
+    AnimatedSprite.prototype.gotoAndStop = function (frameNumber) {
+        this.displayElement.gotoAndStop(frameNumber);
+    };
+    Object.defineProperty(AnimatedSprite.prototype, "loop", {
+        get: function () {
+            return this.displayElement.loop;
+        },
+        set: function (loop) {
+            this.displayElement.loop = loop;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    AnimatedSprite.COMPLETED = "completed";
+    return AnimatedSprite;
+}(Element_1.Element));
+exports.AnimatedSprite = AnimatedSprite;
 // class AnimatedSprite extends Container{
 //     currentAnimation:string;
 //     constructor(public animations:Array<Animation>=[],baseAnimation:string=null,x:number=0,y:number=0,pivotX:number=0,pivotY:number=0){

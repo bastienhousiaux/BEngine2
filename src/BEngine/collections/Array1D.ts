@@ -97,7 +97,7 @@ export class Array1D<T> extends BEngineObject {
         return indexes;
     }
 
-    forEach(callback: (element: T, index: number, array: BEngine.collections.Array1D<T>) => void) {
+    forEach(callback: (element: T, index: number, array: Array1D<T>) => void) {
         for (let index = 0; index < this.length; index++) {
             callback(this.get(index), index, this);
         }
@@ -153,40 +153,40 @@ export class Array1D<T> extends BEngineObject {
      * and returns it with the starting index, returns null if not found
      * @param group 
      */
-    findGroup(group: Array<T>, start: number = 0, end: number = this.length - 1, step: number = 1): BEngine.collections.ArrayGroupResult<T> {
-        var currSetIndex: number = 0;
-        var realGroup: Array<T>;
+    // findGroup(group: Array<T>, start: number = 0, end: number = this.length - 1, step: number = 1): BEngine.collections.ArrayGroupResult<T> {
+    //     var currSetIndex: number = 0;
+    //     var realGroup: Array<T>;
 
-        for (var i = start; i <= end; i += step) {
-            realGroup = new Array<T>();
-            var groupCopy = group.slice();
-            var j = 0;
-            while ((i + j) <= end && (currSetIndex = groupCopy.indexOf(this.get(i + j))) >= 0) {
-                realGroup.push(groupCopy.splice(currSetIndex, 1)[0]);
-                j += step;
-            }
-            if (groupCopy.length === 0) {
-                var result = new BEngine.collections.ArrayGroupResult<T>(group.length);
-                for (var k = 0; k < group.length; k++) {
-                    result.set(k, new ArrayGroupResultItem<T>(i + k * step, realGroup[k]));
-                }
-                return result;
-            }
-        }
+    //     for (var i = start; i <= end; i += step) {
+    //         realGroup = new Array<T>();
+    //         var groupCopy = group.slice();
+    //         var j = 0;
+    //         while ((i + j) <= end && (currSetIndex = groupCopy.indexOf(this.get(i + j))) >= 0) {
+    //             realGroup.push(groupCopy.splice(currSetIndex, 1)[0]);
+    //             j += step;
+    //         }
+    //         if (groupCopy.length === 0) {
+    //             var result = new BEngine.collections.ArrayGroupResult<T>(group.length);
+    //             for (var k = 0; k < group.length; k++) {
+    //                 result.set(k, new ArrayGroupResultItem<T>(i + k * step, realGroup[k]));
+    //             }
+    //             return result;
+    //         }
+    //     }
 
-        return null;
-    }
+    //     return null;
+    // }
 
-    findGroups(group: Array<T>, start: number = 0, end: number = this.length - 1, step: number = 1): Array1D<BEngine.collections.ArrayGroupResult<T>> {
-        var results = new BEngine.collections.Array1D<BEngine.collections.ArrayGroupResult<T>>();
-        var currStart = start;
-        var result: ArrayGroupResult<T> = null;
-        while (result = this.findGroup(group, currStart, end, step)) {
-            results.push(result);
-            currStart = result.get(0).index + step;
-        }
-        return results;
-    }
+    // findGroups(group: Array<T>, start: number = 0, end: number = this.length - 1, step: number = 1): Array1D<BEngine.collections.ArrayGroupResult<T>> {
+    //     var results = new BEngine.collections.Array1D<BEngine.collections.ArrayGroupResult<T>>();
+    //     var currStart = start;
+    //     var result: ArrayGroupResult<T> = null;
+    //     while (result = this.findGroup(group, currStart, end, step)) {
+    //         results.push(result);
+    //         currStart = result.get(0).index + step;
+    //     }
+    //     return results;
+    // }
 
     getRandomIndex(): number {
         return Math.floor(Math.random() * this.length);

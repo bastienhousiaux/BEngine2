@@ -13,7 +13,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var BEngineObject_1 = require("./../core/BEngineObject");
+var BEngineEmitter_1 = require("./../core/BEngineEmitter");
 /// <reference path="../components/Component.ts"/>
 var Element = /** @class */ (function (_super) {
     __extends(Element, _super);
@@ -54,7 +54,7 @@ var Element = /** @class */ (function (_super) {
     };
     Element.prototype.destroy = function () {
         this.displayElement.destroy();
-        _super.prototype.destroy.call(this);
+        // super.destroy();
     };
     Element.prototype.addChild = function (element) {
         if (element instanceof Element) {
@@ -190,5 +190,5 @@ var Element = /** @class */ (function (_super) {
         return null;
     };
     return Element;
-}(BEngineObject_1.BEngineObject));
+}(BEngineEmitter_1.BEngineEmitter));
 exports.Element = Element;

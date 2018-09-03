@@ -1,27 +1,29 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var PIXI = require("pixi.js");
 var RessourceManager = /** @class */ (function () {
     function RessourceManager() {
     }
     // static animations:Array<Animation>=[];
     RessourceManager.load = function (ressources, callback) {
+        if (ressources === void 0) { ressources = {}; }
         for (var key in ressources) {
-            if (typeof RessourceManager.ressources[key] === "object") {
-                for (var i = RessourceManager.ressources[key]["start"]; i <= RessourceManager.ressources[key]["end"]; i++) {
-                    var path = RessourceManager.ressources[key]["basePath"];
+            if (typeof ressources[key] === "object") {
+                for (var i = ressources[key]["start"]; i <= ressources[key]["end"]; i++) {
+                    var path = ressources[key]["basePath"];
                     if (i / 1000 < 1)
                         path += "0";
                     if (i / 100 < 1)
                         path += "0";
                     if (i / 10 < 1)
                         path += "0";
-                    path += i + "." + RessourceManager.ressources[key]["extension"];
+                    path += i + "." + ressources[key]["extension"];
                     RessourceManager.loader.add(key + i, path);
                 }
             }
             else {
                 //if(/.{4}$/.exec(ressources[key])[0]==="json")
-                RessourceManager.loader.add(key, RessourceManager.ressources[key]);
+                RessourceManager.loader.add(key, ressources[key]);
             }
         }
         RessourceManager.loader.load(function (loader, resources) {
@@ -38,8 +40,6 @@ var RessourceManager = /** @class */ (function () {
         return RessourceManager.ressources[name];
     };
     RessourceManager.getSprite = function (name) {
-        console.log(name);
-        console.log(RessourceManager.ressources[name]);
         return RessourceManager.ressources[name].data;
     };
     RessourceManager.getJSON = function (name) {
